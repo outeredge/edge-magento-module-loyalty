@@ -1,0 +1,21 @@
+{
+    "name": "outeredge/edge-magento-module-loyalty",
+    "type": "magento-module",
+    "description": "Loyalty Scheme Module by outer/edge",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "outer/edge",
+            "email": "support@outeredgeuk.com"
+        }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "extra": {
+        "map": [
+            ["app/code/local/Edge/Loyalty", "app/code/local/Edge/Loyalty"],
+            ["app/etc/modules/Edge_Loyalty.xml", "app/etc/modules/Edge_Loyalty.xml"]
+        ]
+    }
+}

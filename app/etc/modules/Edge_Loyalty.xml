@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Edge_Loyalty>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Adminhtml/>
+                <Mage_Core/>
+                <Mage_Catalog/>
+                <Mage_Customer/>
+                <Mage_Sales/>
+            </depends>
+        </Edge_Loyalty>
+    </modules>
+</config>
