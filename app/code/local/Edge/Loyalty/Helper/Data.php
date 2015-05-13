@@ -66,7 +66,7 @@ class Edge_Loyalty_Helper_Data extends Mage_Core_Helper_Abstract
         $product->setData('loyalty_price', $loyaltyPrice);
     }
 
-    protected function _checkEligible()
+    public function buildLoyaltyQuery()
     {
         $orders = Mage::getResourceModel('sales/order_collection');
 
@@ -92,6 +92,11 @@ class Edge_Loyalty_Helper_Data extends Mage_Core_Helper_Abstract
             $orders->getSelect()->having("count >= $ordersCount");
         }
 
-        return (bool)$orders->count();
+        return $orders;
+    }
+
+    protected function _checkEligible()
+    {
+        return (bool)$this->buildLoyaltyQuery()->count();
     }
 }
