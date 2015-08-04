@@ -42,7 +42,7 @@ class Edge_Loyalty_Helper_Data extends Mage_Core_Helper_Abstract
             $price = $product->getSpecialPrice();
         }
         $rulePrice = Mage::getModel('catalogrule/rule')->calcProductPriceRule($product, $product->getPrice());
-        if ($rulePrice < $price) {
+        if ($rulePrice && $rulePrice < $price) {
             $price = $rulePrice;
         }
 
