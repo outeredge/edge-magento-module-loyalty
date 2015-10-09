@@ -38,9 +38,20 @@ class Edge_Loyalty_Helper_Data extends Mage_Core_Helper_Abstract
     {
         $discount = $this->getDiscount();
         $price = $product->getPrice();
-        if ($product->getSpecialPrice()) {
-            $price = $product->getSpecialPrice();
+
+        if ($product->getTypeId() === 'bundle') {
+            if ($priceType === 'special') {
+                $priceType = 'final';
+            }
+            if ($product->getSpecialPrice()) {
+                $price = $price * ($product->getSpecialPrice() / 100);
+            }
+        } else {
+            if ($product->getSpecialPrice()) {
+                $price = $product->getSpecialPrice();
+            }
         }
+
         $rulePrice = Mage::getModel('catalogrule/rule')->calcProductPriceRule($product, $product->getPrice());
         if ($rulePrice && $rulePrice < $price) {
             $price = $rulePrice;
