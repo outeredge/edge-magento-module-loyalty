@@ -15,9 +15,14 @@ class Edge_Loyalty_Model_Price_Observer
 
     public function catalogProductLoadAfter(Varien_Event_Observer $observer)
     {
+        $product = $observer->getEvent()->getProduct();
+        if ($product->getData('no_loyalty_calculation')) {
+            return;
+        }
+
         $helper = Mage::helper('loyalty');
         if ($helper->isEligible()) {
-            $helper->applyLoyaltyDiscount($observer->getEvent()->getProduct(), 'special');
+            $helper->applyLoyaltyDiscount($product, 'special');
         }
     }
 
