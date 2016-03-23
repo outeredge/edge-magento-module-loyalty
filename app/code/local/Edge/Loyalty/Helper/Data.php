@@ -80,6 +80,7 @@ class Edge_Loyalty_Helper_Data extends Mage_Core_Helper_Abstract
     public function buildLoyaltyQuery()
     {
         $orders = Mage::getResourceModel('sales/order_collection');
+	$orders->addFieldToFilter('status', array('neq' => 'canceled'));
 
         $periodValue = Mage::getStoreConfig('loyalty/period/value');
         $periodType = Mage::getStoreConfig('loyalty/period/type');
